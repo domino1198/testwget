@@ -1,0 +1,14 @@
+<svg width="570" height="557" xmlns="http://www.w3.org/2000/svg">
+
+ <g>
+  <title>background</title>
+  <rect fill="none" id="canvas_background" height="602" width="802" y="-1" x="-1"/>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <path id="svg_1" fill="#FCEA00" d="m50.2972,149.943c71.1168,-94.1486 167.6898,-144.25347 284.8708,-149.5064c89.3,-4.04072 159.608,36.3664 184.661,132.1314c9.293,35.154 20.607,69.5 29.093,105.059c15.759,66.671 29.093,134.151 15.354,203.248c-15.758,80.41 -63.035,117.585 -145.061,115.564c-2.021,0 -4.041,0 -6.061,-0.404c-113.545,-10.102 -219.007,-48.084 -319.6211,-98.997c-56.166,-28.285 -86.87549,-79.198 -92.53247,-142.638c-5.65699,-61.015 12.93027,-116.372 49.29677,-164.457z"/>
+  <path id="svg_2" fill="#EB5F52" d="m419.959,341.665l37.374,1.931c13.505,0.698 27.037,-0.699 40.114,-4.142l35.734,-9.409l4.465,43.509c3.209,31.265 -19.535,59.212 -50.801,62.42c-31.265,3.209 -59.212,-19.536 -62.421,-50.801l-4.465,-43.508z"/>
+  <text stroke="null" transform="matrix(4.022784016854757,0,0,4.398040756581394,-499.65634980890553,-437.7099116002628) " font-style="normal" font-weight="normal" xml:space="preserve" text-anchor="start" font-family="'Arial'" font-size="24" id="svg_14" y="153.09222" x="149.73159" fill-opacity="null" stroke-opacity="null" stroke-width="0" fill="#000000">English</text>
+  <text stroke="null" transform="matrix(3.3995714187622066,0,0,3.7058823108673096,-232.55649900436404,-729.8143264986575) " xml:space="preserve" text-anchor="start" font-family="'Arial'" font-size="24" id="svg_15" y="304.95313" x="101.5" fill-opacity="null" stroke-opacity="null" stroke-width="0" fill="#000000">Patient</text>
+ </g>
+</svg>
