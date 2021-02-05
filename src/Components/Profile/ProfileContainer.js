@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import Profile from "./Profile";
 import {connect} from "react-redux";
-import {getAuthUserData} from "../../Redux/UserReducer";
+import {getAuthUserData, logOut} from "../../Redux/UserReducer";
 
 class ProfileContainer extends Component {
 
@@ -21,5 +21,5 @@ const mapStateToProps = (state) => {
     }
 
 };
-export default connect(mapStateToProps, {getAuthUserData, /*logout*/})(ProfileContainer);
+export default connect(mapStateToProps, {getAuthUserData, logOut})(ProfileContainer);
 

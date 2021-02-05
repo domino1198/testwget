@@ -1,59 +1,62 @@
 import {authAPI} from "../api/api";
 import {stopSubmit} from "redux-form";
+import {SET_IS_AUTH, SET_USER_DATA, TOGGLE_IS_FETCHING} from "./types";
 
-const SET_USER_DATA = 'SET_USER_DATA';
-const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING';
 
 let initialState = {
     user: {},
     isAuth: false,
-    isFetching: false
-
+    isFetching: false,
 }
 
 const userReducer = (state = initialState, action) => {
+
     switch (action.type) {
         case SET_USER_DATA:
-            return {...state, user:action.user, isAuth: true}
+            return {...state, user: action.user, isAuth: action.isAuth};
         case TOGGLE_IS_FETCHING:
-            return {...state, isFetching: action.isFetching}
+            return {...state, isFetching: action.isFetching};
+        case SET_IS_AUTH:
+            return {...state, isAuth: action.isAuth};
         default:
             return state;
-    }
+    };
 };
 
 export const toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching});
-export const setAuthUserData = ( user, isAuth) => ({type: SET_USER_DATA, user, isAuth});
-export const  getAuthUserData = (token) => (dispatch) => {
-    authAPI.me(token)
+export const setAuthUserData = (user, isAuth) => ({type: SET_USER_DATA, user, isAuth});
+export const setAuth = (isAuth) => ({type: SET_IS_AUTH, isAuth});
+
+
+export const getAuthUserData = () => async (dispatch) => {
+    await authAPI.getUser()
         .then(response => {
-                dispatch(setAuthUserData(response.data.result.user, true));
+            console.log("me")
+            console.log(response)
+            dispatch(setAuthUserData(response.data.result.user, true));
         });
 };
 
-export const login = (email, password) => (dispatch) => {
+export const login = (email, password) => async (dispatch) => {
     dispatch(toggleIsFetching(true));
-    authAPI.login(email, password)
+    await authAPI.login(email, password)
         .then(response => {
-            if (response.data.token !== undefined) {
+            if (!response.data.error) {
+
+                localStorage.setItem('auth_token', response.data.token);
+                dispatch(getAuthUserData());
                 dispatch(toggleIsFetching(false));
-                dispatch(getAuthUserData(response.data.token));
             } else {
                 dispatch(toggleIsFetching(false));
-                dispatch(stopSubmit("login",{_error: response.data.error.message}));
+                dispatch(stopSubmit("login", {_error: response.data.error.message}));
             }
         });
-
 }
 
-/*export const logout = () => (dispatch) => {
-    dispatch(toggleIsFetching(true));
-    authAPI.logout()
-        .then(response => {
-            console.log(response);
-            dispatch(toggleIsFetching(false));
-                dispatch(setAuthUserData({}, false));
 
-        });
-}*/
+export const logOut = () => (dispatch) =>{
+  localStorage.removeItem('auth_token');
+  dispatch(setAuth(false));
+};
+
 export default userReducer;

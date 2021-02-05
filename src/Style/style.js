@@ -185,7 +185,6 @@ export const WrongAuthField = styled.div`
     font-size: 16px;
     color: rgb(153, 0, 0);
     margin-bottom: 14px;
-
 `;
 
 
