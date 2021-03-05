@@ -3,6 +3,7 @@ import {stopSubmit} from "redux-form";
 import {SET_IS_AUTH, SET_USER_DATA, TOGGLE_IS_FETCHING} from "./types";
 
 
+
 let initialState = {
     user: {},
     isAuth: false,
@@ -35,6 +36,7 @@ export const getAuthUserData = () => async (dispatch) => {
             console.log(response)
             dispatch(setAuthUserData(response.data.result.user, true));
         });
+        
 };
 
 export const login = (email, password) => async (dispatch) => {
@@ -60,3 +62,4 @@ export const logOut = () => (dispatch) =>{
 };
 
 export default userReducer;
+
